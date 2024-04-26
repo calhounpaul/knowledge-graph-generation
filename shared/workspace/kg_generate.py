@@ -164,13 +164,14 @@ if recreate_graph_store:
     #print("ROOT_ID:",kg_index.root_id)
 else:
     #kg_index = load_graph_from_storage(storage_context)
-    kg_index = load_index_from_storage(storage_context,index_id="45b43b0b-f7dc-4d95-85bc-ea1bdb1ca6a2")
+    kg_index = load_index_from_storage(storage_context,index_id="c870c940-58d4-4d92-b399-1360143345d6")
 
 query_engine = kg_index.as_query_engine(
     include_text=True,
     response_mode="tree_summarize",
     embedding_mode="hybrid",
     similarity_top_k=5,
+    streaming=True,
 )
 
 with open("tmp/test_qs.txt") as f:
